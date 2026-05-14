@@ -51,12 +51,33 @@ int main() {
 
     return 0;
 }
-// ==========================================
-// DEFINICIONES 
-// ==========================================
-void registrarEstudiantes(string nombres[], float notas[], int &n) {}
-void mostrarListado(string nombres[], float notas[], int n) {}
-float calcularPromedio(float notas[], int n) { return 0; }
-void mostrarMayorMenor(string nombres[], float notas[], int n) {}
-void contarAprobados(float notas[], int n) {}
-void buscarEstudiante(string nombres[], float notas[], int n) {}
+//FUNCIONES
+void registrarEstudiantes(string nombres[], float notas[], int &n) {
+    cout << "Cuantos estudiantes (1-20): ";
+    cin >> n;
+
+    // Validacion de cantidad
+    while (n < 1 || n > 20) {
+        cout << "Invalido. Ingrese entre 1 y 20: ";
+        cin >> n;
+    }
+
+    for (int i = 0; i < n; i++) {
+        cout << "Nombre estudiante " << i + 1 << ": ";
+        cin >> nombres[i]; 
+        
+        cout << "Nota (0-20): ";
+        cin >> notas[i];
+        
+        // Validacion de nota
+        while (notas[i] < 0 || notas[i] > 20) {
+            cout << "Nota invalida. Ingrese de nuevo: ";
+            cin >> notas[i];
+        }
+    }
+}
+void mostrarListado(string nombres[], float notas[], int n) {
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << ". " << nombres[i] << " - " << notas[i] << endl;
+    }
+}
