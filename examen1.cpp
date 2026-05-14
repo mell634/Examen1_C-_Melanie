@@ -81,3 +81,63 @@ void mostrarListado(string nombres[], float notas[], int n) {
         cout << i + 1 << ". " << nombres[i] << " - " << notas[i] << endl;
     }
 }
+float calcularPromedio(float notas[], int n) {
+    float suma = 0;
+    for (int i = 0; i < n; i++) {
+        suma = suma + notas[i];
+    }
+    return suma / n;
+}
+void mostrarMayorMenor(string nombres[], float notas[], int n) {
+    float mayor = notas[0];
+    float menor = notas[0];
+    int posMayor = 0;
+    int posMenor = 0;
+
+    for (int i = 1; i < n; i++) {
+        if (notas[i] > mayor) {
+            mayor = notas[i];
+            posMayor = i;
+        }
+        if (notas[i] < menor) {
+            menor = notas[i];
+            posMenor = i;
+        }
+    }
+    cout << "Nota Mayor: " << nombres[posMayor] << " (" << mayor << ")" << endl;
+    cout << "Nota Menor: " << nombres[posMenor] << " (" << menor << ")" << endl;
+}
+void contarAprobados(float notas[], int n) {
+    int ca = 0, cr = 0;
+    for (int i = 0; i < n; i++) {
+        if (notas[i] >= 14) {
+            ca++;
+        } else {
+            cr++;
+        }
+    }
+    cout << "Aprobados: " << ca << endl;
+    cout << "Reprobados: " << cr << endl;
+}
+void buscarEstudiante(string nombres[], float notas[], int n) {
+    string buscado;
+    int encontrado = -1; //-1 para indicar que no se encontro
+    cout << "Nombre a buscar: ";
+    cin >> buscado;
+
+    for (int i = 0; i < n; i++) {
+        if (nombres[i] == buscado) {
+            encontrado = i;
+        }
+    }
+
+    if (encontrado != -1) {
+        cout << "Estudiante: " << nombres[encontrado] << endl;
+        cout << "Nota: " << notas[encontrado] << endl;
+        if (notas[encontrado] >= 14) cout << "Estado Aprobado" << endl;
+        else cout << "Estado Reprobado" << endl;
+    } else {
+        cout << "Estudiante no encontrado" << endl;
+    }
+}
+
